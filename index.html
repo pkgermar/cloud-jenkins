@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Keneth G. De Guzman</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">🏠 Resume</a>
+    <a href="gallery.html">📸 Gallery</a>
+</nav>
+
+<header class="hero">
+    <h1>Princess Keneth G. De Guzman</h1>
+
+    <p class="tagline">
+	🌸 Aspiring IT Professional | Cybersecurity Enthusiast | TechStart Engineer 🌸
+</p>
+
+    <a href="PKGDG_RESUME.pdf">📄 View My Resume in PDF </a>
+</header>
+
+<div class="profile-card">
+
+<h3>👋 Hello!</h3>
+
+<p>
+Welcome to my portfolio website.
+This page showcases my education,
+experience, certifications, and achievements.
+</p>
+
+</div>
+
+<section>
+    <h2>🌸 Professional Summary</h2>
+
+    <p>
+        Computer Engineering graduate with a strong foundation in Information and
+        Communications Technology, cybersecurity fundamentals, administrative
+        support, and documentation management. Experienced in government office
+        operations through internship work at the Department of Information and
+        Communications Technology (DICT). Highly organized, adaptable, and eager
+        to continuously learn while contributing meaningful value in professional
+        environments.
+    </p>
+</section>
+
+<section>
+    <h2>🎓 Education</h2>
+
+    <h3>Polytechnic University of the Philippines – Sta. Maria Campus</h3>
+
+    <p>
+        Bachelor of Science in Computer Engineering
+        <br>
+        2021 – 2025
+        <br>
+        <strong>Magna Cum Laude</strong>
+        <br>
+        GWA: 1.25140
+    </p>
+</section>
+
+<section>
+    <h2>💻 Technical Skills</h2>
+
+    <ul>
+        <li>Database Management</li>
+        <li>Google Sheets & Microsoft Excel</li>
+        <li>Google Workspace</li>
+        <li>Microsoft Office Suite</li>
+        <li>Documentation & Record Management</li>
+        <li>Computer Hardware Troubleshooting</li>
+        <li>Cybersecurity Fundamentals</li>
+        <li>Email and Collaboration Tools</li>
+        <li>Data Analysis and Reporting</li>
+    </ul>
+</section>
+
+<section>
+    <h2>🤝 Soft Skills</h2>
+
+    <ul>
+        <li>Leadership</li>
+        <li>Critical Thinking</li>
+        <li>Problem Solving</li>
+        <li>Adaptability</li>
+        <li>Communication</li>
+        <li>Team Collaboration</li>
+        <li>Attention to Detail</li>
+        <li>Fast Learner</li>
+        <li>Time Management</li>
+    </ul>
+</section>
+
+<section>
+    <h2>📚 Experience</h2>
+
+    <h3>Department of Information and Communications Technology (DICT)</h3>
+
+    <p>
+        <strong>Intern</strong><br>
+        August 2023 – October 2023
+    </p>
+
+    <ul>
+        <li>Prepared, reviewed, and organized official documents.</li>
+        <li>Maintained digital records using Google Sheets.</li>
+        <li>Supported PNPKI certificate processing activities.</li>
+        <li>Assisted cybersecurity awareness and digital literacy programs.</li>
+        <li>Performed administrative and clerical support functions.</li>
+        <li>Developed practical skills in documentation and public service delivery.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Leadership & Organizational Experience</h2>
+
+    <ul>
+        <li>
+            <strong>Class President</strong> (2022 – 2025)
+        </li>
+
+        <li>
+            <strong>Chairperson, Secretariat Committee</strong><br>
+            Alliance of Computer Engineering Students (ACES)<br>
+            2024 – 2025
+        </li>
+
+        <li>
+            <strong>Member, Secretariat Committee</strong><br>
+            Alliance of Computer Engineering Students (ACES)<br>
+            2023 – 2024
+        </li>
+
+        <li>
+            <strong>Deputy Chairperson, Commission on Elections</strong><br>
+            2024 – 2025
+        </li>
+
+        <li>
+            <strong>Commissioner, Commission on Elections</strong><br>
+            2023 – 2024
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>🏆 Achievements</h2>
+
+    <ul>
+        <li>Civil Service Eligibility – Professional Level</li>
+        <li>Magna Cum Laude Graduate</li>
+        <li>President's Lister (2021 – 2025)</li>
+        <li>ISC² Certified in Cybersecurity (CC)</li>
+        <li>Microsoft Cybersecurity Course: Security, Compliance, and Identity Fundamentals</li>
+    </ul>
+</section>
+
+<section>
+    <h2>📞 Contact Information</h2>
+
+    <p>
+        📍 Pandi, Bulacan<br>
+        📧 princesskenethdeguzman@gmail.com<br>
+        📱 +63 908 785 8456
+    </p>
+</section>
+<footer>
+    ✨ Thank you for visiting my portfolio website ✨
+    <br><br>
+    🌸 "Success is not the key to happiness. Happiness is the key to success." 🌸
+</footer>
+<script>
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.classList.add("petal");
+
+    const size = Math.random() * 12 + 8;
+
+    petal.style.width = size + "px";
+    petal.style.height = size + "px";
+
+    petal.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(petal);
+
+    let posY = -20;
+
+    let posX = parseFloat(petal.style.left);
+
+    let drift = (Math.random() * 2) - 1;
+
+    let speed = Math.random() * 2 + 1;
+
+    let rotation = Math.random() * 360;
+
+    const fall = setInterval(() => {
+
+        posY += speed;
+
+        posX += drift;
+
+        rotation += 2;
+
+        petal.style.top = posY + "px";
+
+        petal.style.left = posX + "px";
+
+        petal.style.transform =
+            `rotate(${rotation}deg)`;
+
+        if(posY > window.innerHeight + 50){
+
+            clearInterval(fall);
+
+            petal.remove();
+
+        }
+
+    },20);
+
+}
+
+setInterval(createPetal, 1200);
+
+</script>
+</body>
+</html>

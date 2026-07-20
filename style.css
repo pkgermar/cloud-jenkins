@@ -1,0 +1,223 @@
+/* ===== GENERAL ===== */
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #fff5f8,
+        #fff9fc
+    );
+    margin:0;
+    color:#333;
+}
+
+/* ===== NAVBAR ===== */
+
+nav{
+    background:#ff7aa2;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:20px;
+    font-weight:bold;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#fff0f5;
+    transform:scale(1.05);
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    text-align:center;
+    padding:60px 20px 30px;
+}
+
+.hero h1{
+    color:#e75480;
+    font-size:52px;
+    margin-bottom:10px;
+}
+
+.tagline{
+    color:#ff69b4;
+    font-size:18px;
+    font-style:italic;
+    margin-bottom:25px;
+}
+
+/* ===== RESUME BUTTON ===== */
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    background:#ff69b4;
+    color:white;
+    padding:14px 28px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(255,105,180,0.3);
+    transition:all 0.3s ease;
+}
+
+.btn:hover{
+    background:#ff1493;
+    transform:translateY(-3px);
+}
+
+/* ===== INTRO CARD ===== */
+
+.profile-card{
+    background:#fff0f6;
+    max-width:650px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(255,105,180,0.1);
+}
+
+/* ===== RESUME SECTIONS ===== */
+
+section{
+    max-width:900px;
+    margin:30px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(255,105,180,0.15);
+    transition:all 0.3s ease;
+}
+
+section:hover{
+    transform:translateY(-5px);
+}
+
+h2{
+    color:#e75480;
+    border-left:5px solid #ff7aa2;
+    padding-left:12px;
+    margin-bottom:20px;
+}
+
+h3{
+    color:#444;
+}
+
+ul{
+    padding-left:25px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:300px;
+    background:white;
+    padding:15px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    text-align:center;
+    transition:all 0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card img:hover{
+    transform:scale(1.05);
+}
+
+.card h3{
+    margin-top:15px;
+    color:#e75480;
+}
+
+.card p{
+    color:#666;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#ff7aa2;
+    color:white;
+    margin-top:30px;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .tagline{
+        font-size:16px;
+    }
+
+    .card{
+        width:90%;
+    }
+
+    nav a{
+        display:block;
+        margin:10px;
+    }
+
+}
+.petal{
+    position:fixed;
+
+    top:-20px;
+
+    background:linear-gradient(
+    135deg,
+    #ffd1dc,
+    #ffb6c1
+	);
+
+    border-radius:
+        70% 0 70% 0;
+
+    opacity:0.8;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    box-shadow:
+        inset 1px 1px 4px rgba(255,255,255,0.8);
+}
