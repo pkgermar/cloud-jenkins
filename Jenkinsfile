@@ -44,7 +44,7 @@ pipeline {
                 sh '''
                 curl -f ${ACI_URL}
 
-                curl ${ACI_URL} | grep "Version"
+                curl ${ACI_URL} | grep "Princess Keneth"
                 '''
             }
         }
