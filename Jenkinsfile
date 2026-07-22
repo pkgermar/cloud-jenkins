@@ -34,7 +34,6 @@ pipeline {
                     --source index.html \
                     --path index.html \
                     --account-key ${AZURE_STORAGE_KEY} \
-                    --overwrite true
                     '''
                 }
             }
