@@ -1,52 +1,81 @@
-// GitHub push -> webhook -> Jenkins -> SSH/rsync -> Apache servers (/var/www/html).
-// Uses the SSH Agent plugin + the 'webservers-ssh-key' credential. Put at repo ROOT.
-
 pipeline {
     agent any
 
-    options {
-        timestamps()
-        disableConcurrentBuilds()
-    }
-
     environment {
-        // ---- EDIT THESE ----
-        SERVERS = 'ubuntu@100.58.108.23 ubuntu@54.145.1.126'  // your two web servers
-        DOCROOT = '/var/www/html'                             // Apache default doc root
-        APP_SRC = './'                                        // repo root; 'dist/' if you build
-        // --------------------
+        ACI_URL = "http://40.88.194.87"
+
+        SERVERS = "ubuntu@44.214.89.39 ubuntu@3.82.187.145"
+
+        STORAGE_ACCOUNT = "azblobpk"
+        FILE_SHARE = "nginx-html"
+
+        RESOURCE_GROUP = "rg-azuser7674_mml.local-hLEHv"
     }
 
     stages {
 
         stage('Checkout') {
-            steps { checkout scm }
-        }
-
-        stage('Build & Test') {
             steps {
-                // Put real build/test commands here if any, e.g. sh 'npm ci && npm run build'
-                sh 'echo "No build step — deploying repo as-is."'
+                checkout scm
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Staging') {
             steps {
-                sshagent(credentials: ['webservers-ssh-key']) {
+                withCredentials([
+                    string(credentialsId: 'azure-storage-key',
+                    variable: 'AZURE_STORAGE_KEY')
+                ]) {
+
                     sh '''
-                        set -eu
-                        SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-                        for HOST in ${SERVERS}; do
-                            echo "=== Deploying to ${HOST}:${DOCROOT} ==="
-                            # --rsync-path="sudo rsync" lets rsync write to /var/www/html on the server.
-                            rsync -az --delete -e "ssh ${SSH_OPTS}" --rsync-path="sudo rsync" \
-                                --exclude '.git' --exclude 'Jenkinsfile' \
-                                "${APP_SRC}" "${HOST}:${DOCROOT}/"
-                            ssh ${SSH_OPTS} "${HOST}" "sudo systemctl reload apache2"
-                            echo "=== ${HOST} updated ==="
-                        done
+                    az storage file upload \
+                    --account-name ${STORAGE_ACCOUNT} \
+                    --share-name ${FILE_SHARE} \
+                    --source index.html \
+                    --path index.html \
+                    --account-key ${AZURE_STORAGE_KEY} \
+                    --overwrite true
                     '''
                 }
+            }
+        }
+
+        stage('Test Staging') {
+            steps {
+                sh '''
+                curl -f ${ACI_URL}
+
+                curl ${ACI_URL} | grep "Version"
+                '''
+            }
+        }
+
+        stage('Deploy Production') {
+            steps {
+
+                sshagent(credentials: ['webservers-ssh-key']) {
+
+                    sh '''
+
+                    SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+                    for HOST in ${SERVERS}; do
+
+                        rsync -az \
+                        -e "ssh ${SSH_OPTS}" \
+                        index.html \
+                        ${HOST}:/tmp/
+
+                        ssh ${SSH_OPTS} ${HOST} "
+                        sudo cp /tmp/index.html /var/www/html/index.html &&
+                        sudo systemctl reload apache2
+                        "
+
+                    done
+
+                    '''
+                }
+
             }
         }
     }
